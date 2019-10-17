@@ -24,7 +24,7 @@ vagrant box add centos/7
 vagrant up # CentOSを起動
 vagrant ssh # CentOS内にログイン
 ```
-※ Vgarantの詳しい使い方は自分で調べて
+※ Vagrantの詳しい使い方は自分で調べて
 ## MySQLの初期設定
 ```
 # how to setup mysql
