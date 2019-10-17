@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
 	yum update -y
 	yum install -y mysql-community-devel
 	yum install -y mysql-community-server
+	systemctl restart mysqld.service
+	systemctl enable mysqld.service 
 	echo "\n# how to setup mysql" >> /etc/motd
 	echo '$ mysql_secure_installation' >> /etc/motd
 	echo '# how to login mysql' >> /etc/motd
