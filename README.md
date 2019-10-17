@@ -3,12 +3,10 @@ MYSQL環境を構築します
 
 ## 環境構築
 ### Winのかた
-1. Git Bash(git for windows)をインストールする
+1. Git Bash(git for windows)をインストールする  
     ダウンロードリンクは[こちら](https://gitforwindows.org/)
-    Git Bashをパソコンにインストールする
-2. Vagrantをインストール
+2. Vagrantをインストール  
     ダウンロードリンクは[こちら](https://www.vagrantup.com/downloads.html)
-    Vagrantをインストールする
 3. gitbashを起動
 ### Macのかた
 1. Vagrantをインストール
