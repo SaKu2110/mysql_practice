@@ -30,10 +30,58 @@ mysql_secure_installation
 # how to login mysql
 mysql -u root -p
 ```
-詳しい操作はん自分で調べて
+詳しい操作は自分で調べて
+## MySQL8.0　rootユーザのパスワード再設定方法
+すでにパスワードがあるらしく、パスワードの設定ができない...
+```
+$ sudo mysqld  --initialize-insecure
+$ sudo mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Enter password for user root: 
+Error: Access denied for user 'root'@'localhost' (using password: YES)
+```
+
+### #1 パスワードを無効化
+```conf:/etc/my.conf
+[mysqld]
+  ・
+  ・
+  ・
+skip-grant-tables # ここを追記
+```
+
+結果：パスワードなしでログインできる
+
+```
+$ sudo systemctl restart mysqld.service
+$ mysql -u root -p
+Enter password: # Enterで入れる
+```
+
+### #2 パスワードを再設定
+```
+mysql> flush privileges;
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewPassword';
+mysql> exit
+```
+
+```conf:/etc/my.conf
+[mysqld]
+  ・
+  ・
+  ・
+# skip-grant-tables # ここを`#`でコメントアウトする
+```
+```
+$ sudo systemctl restart mysqld.service
+$ mysql -u root -p
+Enter password: 
+```
 ## 後始末
 ```
 exit # CentOSからログアウト
 vagrant halt # CentOSをシャットダウン
-vagrant destroy -f # CentOSの環境を削除
+vagrant destroy -f # CentOSの環境を削除(任意)
 ```
